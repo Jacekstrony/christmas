@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nasza zimowa chatka 🎄</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900;1000&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #fff4df;
+    background:
+        radial-gradient(ellipse at 50% 100%, #71300e 0%, transparent 55%),
+        linear-gradient(135deg, #170b08, #35170c 50%, #160906);
+    overflow: hidden;
+}
+
+.page {
+    width: 100%;
+    height: 100dvh;
+    padding: 12px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+header {
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 58px);
+    margin: 0;
+    color: #ffe0a0;
+    text-shadow: 0 0 15px #ff7800, 0 0 35px #d53b00;
+}
+
+.subtitle {
+    font-size: clamp(14px, 1.5vw, 21px);
+    font-weight: 900;
+    color: #ffc66e;
+}
+
+.garland {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 2.5vw, 35px);
+    padding: 5px;
+}
+
+.bulb {
+    width: clamp(9px, 1.1vw, 15px);
+    height: clamp(9px, 1.1vw, 15px);
+    border-radius: 50%;
+    background: #fff6c4;
+    box-shadow: 0 0 8px 4px #ffbd43, 0 0 20px 7px #ff6b16;
+    animation: twinkle 1.2s infinite alternate;
+}
+
+.bulb:nth-child(3n) {
+    background: #ff5540;
+    box-shadow: 0 0 9px 4px #ff3c17, 0 0 22px #ff2800;
+    animation-delay: .4s;
+}
+
+.bulb:nth-child(2n) {
+    animation-delay: .8s;
+}
+
+@keyframes twinkle {
+    from { opacity: .45; transform: scale(.8); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+.layout {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 18px;
+}
+
+.panel {
+    min-height: 0;
+    overflow: hidden;
+    border: 2px solid #bd7132;
+    border-radius: 25px;
+    padding: clamp(12px, 1.5vw, 22px);
+    background: linear-gradient(145deg, #54250fdd, #281007ee);
+    box-shadow: 0 0 25px #e66a1933, inset 0 0 25px #ffad3320;
+}
+
+.fire-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-title {
+    font-size: clamp(20px, 2vw, 29px);
+    font-weight: 1000;
+    color: #ffcf7c;
+    text-align: center;
+    text-shadow: 0 0 12px #ff7400;
+    margin: 0 0 6px;
+}
+
+.fireplace {
+    position: relative;
+    width: min(100%, 650px);
+    flex: 1;
+    min-height: 0;
+    max-height: 440px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    border: 12px solid #7d3517;
+    border-bottom: 20px solid #9a4b20;
+    border-radius: 50% 50% 12px 12px / 22% 22% 12px 12px;
+    background:
+        radial-gradient(ellipse at 50% 100%, #ff7a00 0%, #a32b08 35%, #210804 75%);
+    box-shadow:
+        inset 0 0 35px #ff8a00,
+        0 0 30px #ff4c00,
+        0 0 70px #e64b00;
+    transition: background .4s, box-shadow .4s;
+}
+
+.flames {
+    position: absolute;
+    bottom: 13%;
+    width: 85%;
+    height: 75%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2%;
+}
+
+.flame {
+    position: relative;
+    width: 17%;
+    height: 75%;
+    border-radius: 50% 50% 30% 30%;
+    transform-origin: bottom;
+    background: linear-gradient(to top, #ff2300 0%, #ff5a00 35%, #ffb000 70%, #fff5bd 100%);
+    filter: drop-shadow(0 0 12px #ff4a00);
+    animation: dance .7s infinite alternate ease-in-out;
+}
+
+.flame:nth-child(2n) {
+    height: 95%;
+    animation-delay: -.3s;
+}
+
+.flame:nth-child(3n) {
+    height: 60%;
+    animation-delay: -.5s;
+}
+
+.flame::after {
+    content: "";
+    position: absolute;
+    width: 55%;
+    height: 70%;
+    left: 22%;
+    bottom: 0;
+    border-radius: 50% 50% 30% 30%;
+    background: linear-gradient(to top, #ff7b00, #fff7d0);
+    filter: blur(2px);
+}
+
+@keyframes dance {
+    from { transform: scaleX(.85) scaleY(.92) rotate(-4deg); }
+    to { transform: scaleX(1.12) scaleY(1.08) rotate(4deg); }
+}
+
+.logs {
+    position: absolute;
+    bottom: 8%;
+    width: 75%;
+    height: 15%;
+    border-radius: 50%;
+    background: linear-gradient(#a95b27, #4d1c0a);
+    box-shadow: 0 0 20px #ff6b00;
+}
+
+.logs::before, .logs::after {
+    content: "";
+    position: absolute;
+    width: 55%;
+    height: 45%;
+    top: 20%;
+    left: 5%;
+    border-radius: 30px;
+    background: linear-gradient(#b96c34, #51200c);
+    transform: rotate(12deg);
+}
+
+.logs::after {
+    left: 42%;
+    transform: rotate(-12deg);
+}
+
+.embers {
+    position: absolute;
+    bottom: 12%;
+    width: 70%;
+    height: 10px;
+    background: #ffb000;
+    border-radius: 50%;
+    filter: blur(12px);
+    box-shadow: 0 0 25px 12px #ff4200;
+}
+
+.fireplace.fire-off {
+    background: radial-gradient(ellipse at 50% 100%, #21120b, #100705 75%);
+    box-shadow: inset 0 0 15px #160805;
+}
+
+.fireplace.fire-off .flames,
+.fireplace.fire-off .embers {
+    display: none !important;
+    animation: none !important;
+}
+
+.fireplace.fire-off .logs {
+    filter: brightness(.22);
+    box-shadow: none;
+}
+
+.fire-status {
+    font-weight: 1000;
+    font-size: clamp(14px, 1.5vw, 20px);
+    color: #ffcf7c;
+    margin-top: 7px;
+}
+
+button {
+    border: 0;
+    border-radius: 50px;
+    padding: 13px 25px;
+    font-family: inherit;
+    font-weight: 1000;
+    font-size: clamp(16px, 1.5vw, 22px);
+    color: #451906;
+    background: linear-gradient(135deg, #fff0a8, #ff9e26);
+    box-shadow: 0 0 20px #ff8500;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px #ffae00;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    gap: 10px;
+}
+
+.welcome {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(23px, 2.6vw, 38px);
+    color: #ffe2a6;
+    text-shadow: 0 0 15px #ff7600;
+}
+
+.message {
+    font-size: clamp(15px, 1.5vw, 21px);
+    line-height: 1.4;
+    font-weight: 900;
+    color: #ffe8c3;
+}
+
+.music {
+    border: 2px solid #d98b43;
+    border-radius: 18px;
+    padding: 12px;
+    background: #2b1009;
+}
+
+.music h2 {
+    color: #ffc56c;
+    font-size: clamp(18px, 1.8vw, 25px);
+    margin: 0 0 8px;
+}
+
+.music a {
+    display: block;
+    color: #ffe0a1;
+    font-size: clamp(14px, 1.4vw, 19px);
+    font-weight: 1000;
+    text-decoration: none;
+    padding: 7px;
+}
+
+.music a:hover {
+    color: #fff;
+    text-shadow: 0 0 12px #ff8b00;
+}
+
+.bottom {
+    text-align: center;
+    color: #ffcf7c;
+    font-weight: 1000;
+    font-size: clamp(13px, 1.3vw, 18px);
+    flex: 0 0 auto;
+}
+
+/* ŚNIEG */
+#snow {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -40px;
+    color: #fffaf0;
+    user-select: none;
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 12px #bdeaff,
+        0 0 20px #d8f4ff;
+    animation-name: snowfall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translate3d(0, -10px, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate3d(35px, 25vh, 0) rotate(90deg);
+    }
+    50% {
+        transform: translate3d(-25px, 50vh, 0) rotate(180deg);
+    }
+    75% {
+        transform: translate3d(40px, 75vh, 0) rotate(270deg);
+    }
+    100% {
+        transform: translate3d(-20px, 110vh, 0) rotate(360deg);
+    }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+    .page { padding-top: 5px; gap: 4px; }
+    h1 { font-size: 30px; }
+    .subtitle { font-size: 13px; }
+    .panel { padding: 9px; }
+    .fireplace { max-height: 300px; }
+    button { padding: 9px 18px; }
+}
+
+@media (max-width: 700px) {
+    body {
+        overflow: auto;
+    }
+
+    .page {
+        height: auto;
+        min-height: 100dvh;
+        padding: 15px;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fire-panel {
+        min-height: 430px;
+    }
+
+    .fireplace {
+        min-height: 270px;
+    }
+
+    .side-panel {
+        min-height: 350px;
+    }
+
+    .panel {
+        overflow: visible;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="snow"></div>
+
+<div class="page">
+
+<header>
+    <h1>🎄 Nasza zimowa chatka 🎄</h1>
+    <div class="subtitle">✨ Ciepło, światełka i magia świąt ✨</div>
+
+    <div class="garland">
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span>
+    </div>
+</header>
+
+<main class="layout">
+
+<section class="panel fire-panel">
+    <h2 class="panel-title">🔥 NASZ PRZYTULNY KOMINEK 🔥</h2>
+
+    <div class="fireplace" id="fireplace">
+        <div class="flames">
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="embers"></div>
+        <div class="logs"></div>
+    </div>
+
+    <div class="fire-status" id="fireStatus">🔥 OGNISKO PŁONIE 🔥</div>
+
+    <button id="fireToggle" type="button">🔥 WYŁĄCZ KOMINEK</button>
+</section>
+
+<section class="panel side-panel">
+    <div class="welcome">Witaj w naszej chatce! ❤️</div>
+
+    <div class="garland">
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+        <span class="bulb"></span><span class="bulb"></span>
+    </div>
+
+    <div class="message">
+        Zaparz sobie coś pysznego ☕<br>
+        Otul się kocykiem 🧣<br>
+        Niech za oknem pada śnieg ❄️<br>
+        A w środku niech będzie ciepło! 🧡
+    </div>
+
+    <div class="music">
+        <h2>🎶 ŚWIĄTECZNA MUZYKA 🎶</h2>
+        <a href="https://youtube.com/playlist?list=PLU94rco57Zez6fASIKZHOQJCOvcT5ALuP" target="_blank" rel="noopener">🎵 Otwórz świąteczną playlistę</a>
+        <a href="https://www.youtube.com/watch?v=t_HUlkHYz4A" target="_blank" rel="noopener">🎄 Włącz zimową muzykę</a>
+    </div>
+
+    <div class="message">✨ Dużo ciepła, spokoju i magicznych chwil ✨</div>
+</section>
+
+</main>
+
+<footer class="bottom">
+    ❤️ ZOSTAŃ TU CHWILKĘ I POCZUJ ŚWIĄTECZNĄ MAGIĘ ❤️
+</footer>
+
+</div>
+
+<script>
+// OBSŁUGA KOMINKA
+const fireplace = document.getElementById("fireplace");
+const fireToggle = document.getElementById("fireToggle");
+const fireStatus = document.getElementById("fireStatus");
+
+let fireIsOn = true;
+
+fireToggle.addEventListener("click", function () {
+    fireIsOn = !fireIsOn;
+
+    fireplace.classList.toggle("fire-off", !fireIsOn);
+
+    if (fireIsOn) {
+        fireToggle.textContent = "🔥 WYŁĄCZ KOMINEK";
+        fireStatus.textContent = "🔥 OGNISKO PŁONIE 🔥";
+    } else {
+        fireToggle.textContent = "🪵 ROZPAL KOMINEK";
+        fireStatus.textContent = "🌙 KOMINEK JEST WYGASZONY";
+    }
+});
+
+// SPADAJĄCE PŁATKI ŚNIEGU
+const snowContainer = document.getElementById("snow");
+const snowSymbols = ["❄", "❅", "❆", "✻", "✼"];
+
+for (let i = 0; i < 75; i++) {
+    const flake = document.createElement("div");
+
+    flake.className = "snowflake";
+    flake.textContent = snowSymbols[
+        Math.floor(Math.random() * snowSymbols.length)
+    ];
+
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.fontSize = (10 + Math.random() * 19) + "px";
+    flake.style.opacity = 0.35 + Math.random() * 0.65;
+    flake.style.animationDuration = (8 + Math.random() * 13) + "s";
+    flake.style.animationDelay = (-Math.random() * 20) + "s";
+
+    snowContainer.appendChild(flake);
+}
+</script>
+
+</body>
+</html>
